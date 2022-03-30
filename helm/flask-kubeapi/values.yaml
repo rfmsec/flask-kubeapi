@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: sec911/flask-kubeapi
+  pullPolicy: Always
+  tag: "latest"
+  env:
+    name: "ENV"
+
+nameOverride: "flask-kubeapi"
+fullname: "flask-kubeapi"
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: "kubeapi"
+
+ingress:
+  enabled: true
+
+service:
+  type: NodePort
+  port: 8080
+  nodePort: 30800
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 50

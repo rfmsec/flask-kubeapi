@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: environ-ver
+data:
+  env.value: "Pre-Production"
